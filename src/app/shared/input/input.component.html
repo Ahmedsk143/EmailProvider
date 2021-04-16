@@ -1,0 +1,36 @@
+<div class="form-group">
+    <label>
+        <ng-content></ng-content>
+    </label>
+    <input [type]="inputType" class="form-control" [formControl]="control"
+        [ngClass]="{'is-invalid':control.errors && control.dirty, 'is-valid':control.valid && control.dirty}">
+
+    <ng-container *ngIf="control.errors && control.dirty">
+        <div *ngIf="control.errors.required" class="invalid-feedback">
+            Input is Required
+        </div>
+        <div *ngIf="control.errors.pattern" class="invalid-feedback">
+            Only Numbers and letters
+        </div>
+        <div *ngIf="control.errors.minlength" class="invalid-feedback d-inline">
+            The length must be
+            {{
+      control.errors.minlength.requiredLength -
+        control.errors.minlength.actualLength
+          }}
+            more
+        </div>
+        <div *ngIf="control.errors.maxlength" class="invalid-feedback d-inline">
+            The length must be
+            {{
+      control.errors.maxlength.requiredLength -
+        control.errors.maxlength.actualLength
+            }}
+            less
+        </div>
+        <div class="invalid-feedback d-inline" *ngIf="control.errors.notUnique">
+            The username is taken
+        </div>
+
+    </ng-container>
+</div>

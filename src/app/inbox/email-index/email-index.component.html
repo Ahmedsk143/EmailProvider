@@ -1,0 +1,10 @@
+<div class="list-group">
+    <a *ngFor="let email of emails" [routerLink]="email.id" routerLinkActive="active"
+        class="list-group-item list-group-item-action  flex-column align-items-start ">
+        <h5 class="mb-1 text-truncate">Subject: {{email.subject}}</h5>
+        <p class="mb-1 text-truncate">From: {{email.from}} </p>
+        <div class="d-flex justify-content-end">
+            <small>{{randomDay}} days ago</small>
+        </div>
+    </a>
+</div>

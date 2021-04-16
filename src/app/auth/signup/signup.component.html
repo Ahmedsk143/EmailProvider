@@ -1,0 +1,34 @@
+<div class="container p-5">
+    <h3>Create new account..</h3>
+    <form [formGroup]="signupForm" class="w-50 mt-5" (ngSubmit)="onSubmit()">
+        <app-input [control]="signupForm.get('username')" inputType="text">
+            Username
+        </app-input>
+
+        <app-input [control]="signupForm.get('password')" inputType="password">
+            Password
+        </app-input>
+
+        <app-input [control]="signupForm.get('passwordConfirmation')" inputType="password">
+            Password Confirmation
+        </app-input>
+
+        <ng-container *ngIf="signupForm.errors ">
+            <div *ngIf="signupForm.errors.passwordNoMatch && signupForm.get('password').dirty && signupForm.get('passwordConfirmation').dirty "
+                class="invalid-feedback d-inline">
+                The password doesn't match
+            </div>
+            <div class="invalid-feedback d-inline" *ngIf="signupForm.errors.connectionError">
+                No internect connection detected, faild to sign up!
+            </div>
+            <div class="invalid-feedback d-inline" *ngIf="signupForm.errors.unknownError">
+                Faild to sign up, Try again later!
+            </div>
+
+        </ng-container>
+
+        <div class="form-group mt-5">
+            <button class="btn btn-primary btn-block" [disabled]="signupForm.invalid">Sign Up</button>
+        </div>
+    </form>
+</div>

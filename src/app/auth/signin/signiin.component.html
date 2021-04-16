@@ -1,0 +1,25 @@
+<div class="container p-5">
+    <h3>Sign in..</h3>
+    <form [formGroup]="signinForm" class="w-50 mt-5" (ngSubmit)="onSubmit()">
+        <app-input [control]="signinForm.get('username')" inputType="text">
+            Username
+        </app-input>
+
+        <app-input [control]="signinForm.get('password')" inputType="password">
+            Password
+        </app-input>
+
+        <ng-container *ngIf="signinForm.errors">
+            <div class="invalid-feedback d-inline" *ngIf="signinForm.errors.wrongUserOrPas">
+                Wrong username or password
+            </div>
+            <div class="invalid-feedback d-inline" *ngIf="signinForm.errors.unknownError">
+                Faild to sign in, Try again later!
+            </div>
+        </ng-container>
+
+        <div class="form-group mt-5">
+            <button class="btn btn-primary btn-block" [disabled]="signinForm.invalid">Sign In</button>
+        </div>
+    </form>
+</div>

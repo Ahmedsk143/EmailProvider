@@ -1,0 +1,14 @@
+#loading {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  animation: load 0.8s normal forwards;
+  background:#0551a3;
+  height: 5px;
+  width: 0;
+}
+
+@keyframes load {
+  0% { width: 0; }
+  100% { width: 100%; }
+}

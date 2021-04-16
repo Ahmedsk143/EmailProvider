@@ -1,0 +1,39 @@
+<nav class="navbar  navbar-expand-lg navbar-dark bg-dark ">
+    <div class="container px-2 ">
+        <a class="navbar-brand" routerLink="/" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true }">Angular Email</a>
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0 flex-row ">
+            <ng-container *ngIf="signedIn">
+                <li class="nav-item mr-4">
+                    <a class="nav-link" routerLink="/inbox" routerLinkActive="active">Inbox <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item btn-group" dropdown>
+                    <a id="button-animated" dropdownToggle type="button" class=" btn btn-primary dropdown-toggle"
+                        aria-controls="dropdown-animated">Welcome, {{username}}
+                        <span class="caret"></span></a>
+                    <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu"
+                        aria-labelledby="button-animated">
+                        <li role="menuitem"><a class="dropdown-item">Settings</a></li>
+                        <li role="menuitem"><a class="dropdown-item" routerLink="/signout">Log out</a></li>
+                    </ul>
+                </li>
+            </ng-container>
+            <ng-container *ngIf="!signedIn">
+                <li class="nav-item mr-4">
+                    <a class="nav-link" routerLink="/" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact:true }">Sign in <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" routerLink="/signup" routerLinkActive="active">Sign up <span
+                            class="sr-only">(current)</span></a>
+                </li>
+            </ng-container>
+        </ul>
+    </div>
+</nav>
+<div *ngIf="loading" id="loading">
+</div>
+
+
+<router-outlet></router-outlet>

@@ -1,0 +1,19 @@
+<section class="py-2">
+    <div class="container">
+        <a (click)="openModal(composeTemp)" class="btn btn-outline-primary btn-block">
+            Compose
+        </a>
+        <ng-template #composeTemp>
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Copmose an Email</h5>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-email-form [email]="email" (sentEmail)="recivedEmail($event)"></app-email-form>
+            </div>
+
+        </ng-template>
+    </div>
+</section>
